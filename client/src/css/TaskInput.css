@@ -1,0 +1,72 @@
+.task-input-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eaf6ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0056b3;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: Black;
+    font-family: cursive;
+    font-style: bold;
+    text-align: left;
+}
+
+.form-input,
+.form-select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 80%;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 4px rgba(0, 86, 179, 0.3);
+}
+
+.add-task-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-task-button:hover {
+    background-color: #003f8a;
+}
+
+.add-task-icon {
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
