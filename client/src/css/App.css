@@ -1,0 +1,34 @@
+/* App.css */
+.app-container {
+    font-family: Arial, sans-serif;
+    background-color: #e9f7ff;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  .app-container h1 {
+    color: #0056b3;
+    font-size: 36px;
+  }
+  
+  .generate-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .generate-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .generate-button:active {
+    background-color: #003d80;
+  }
+  

@@ -65,7 +65,6 @@ async function generateDailySchedule(tasks) {
 // Route to submit tasks and get a schedule
 app.post('/generateSchedule', async (req, res) => {
     console.log("Received request:", req.body);
-
     const tasks = req.body.tasks; // Example: [{ name, duration, location, priority }]
     if (!tasks || !Array.isArray(tasks)) {
         return res.status(400).send("Invalid tasks format. Please send an array of task objects.");

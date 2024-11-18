@@ -4,6 +4,9 @@ import ScheduleView from "./components/ScheduleView";
 import BonusTips from "./components/BonusTips";
 import { generateSchedule } from "./services/api";
 
+// ייבוא קובץ ה-CSS (בהנחה שממוקם בתיקיית src/css)
+import "./css/App.css";
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [schedule, setSchedule] = useState(null);
@@ -20,10 +23,10 @@ function App() {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", margin: "20px" }}>
+    <div className="app-container">
       <h1>Daily Assistant</h1>
       <TaskInput tasks={tasks} setTasks={setTasks} />
-      <button onClick={handleGenerateSchedule} style={{ margin: "10px 0" }}>
+      <button onClick={handleGenerateSchedule} className="generate-button">
         Generate Schedule
       </button>
       {schedule && <ScheduleView schedule={schedule} />}
@@ -33,6 +36,48 @@ function App() {
 }
 
 export default App;
+
+// import React, { useState } from "react";
+// import TaskInput from "./components/TaskInput";
+// import ScheduleView from "./components/ScheduleView";
+// import BonusTips from "./components/BonusTips";
+// import { generateSchedule } from "./services/api";
+// import "./App.css";
+
+
+// function App() {
+//   const [tasks, setTasks] = useState([]);
+//   const [schedule, setSchedule] = useState(null);
+//   const [tips, setTips] = useState([]);
+
+//   const handleGenerateSchedule = async () => {
+//     try {
+//       const response = await generateSchedule(tasks);
+//       setSchedule(response.schedule);
+//       setTips(response.tips);
+//     } catch (error) {
+//       console.error("Error generating schedule:", error);
+//     }
+//   };
+
+//   return (
+//     <div style={{ fontFamily: "Arial, sans-serif", margin: "20px" }}>
+//       <h1>Daily Assistant</h1>
+//       <TaskInput tasks={tasks} setTasks={setTasks} />
+//       <button onClick={handleGenerateSchedule} style={{ margin: "10px 0" }}>
+//         Generate Schedule
+//       </button>
+//       {schedule && <ScheduleView schedule={schedule} />}
+//       {tips && tips.length > 0 && <BonusTips tips={tips} />}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
 
 
 // import logo from './logo.svg';
