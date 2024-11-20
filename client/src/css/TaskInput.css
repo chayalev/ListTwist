@@ -26,9 +26,11 @@
 .form-group label {
     font-size: 1rem;
     color: Black;
-    font-family: cursive;
-    font-style: bold;
-    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+    ;
+    text-align: right;
+    margin-right: 15%;
 }
 
 .form-input,
@@ -37,6 +39,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    text-align: right;
     width: 80%;
 }
 

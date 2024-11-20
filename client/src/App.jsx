@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TaskInput from "./components/TaskInput";
 import ScheduleView from "./components/ScheduleView";
 import BonusTips from "./components/BonusTips";
+import LandingPage from "./components/LandingPage";
 import { generateSchedule } from "./services/api";
 
 // ייבוא קובץ ה-CSS (בהנחה שממוקם בתיקיית src/css)
@@ -24,7 +25,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Daily Assistant</h1>
+      {/* <h1>Daily Assistant</h1> */}
+      <LandingPage />
       <TaskInput tasks={tasks} setTasks={setTasks} />
       <button onClick={handleGenerateSchedule} className="generate-button">
         Generate Schedule
