@@ -24,53 +24,53 @@ function TaskInput({ tasks, setTasks }) {
     <div className="task-input-container">
       {/* <h2 className="form-title">Add a Task</h2> */}
       <div className="form-group">
-        <label>Task Name:</label>
+        <label>הכנס משימה</label>
         <input
           type="text"
           name="name"
-          placeholder="Enter task name"
+          // placeholder="הכנס משימה"
           value={task.name}
           onChange={handleChange}
           className="form-input"
         />
       </div>
       <div className="form-group">
-        <label>Duration:</label>
+        <label>משך זמן</label>
         <input
           type="text"
           name="duration"
-          placeholder="Duration (e.g., 1h)"
+          // placeholder="Duration (e.g., 1h)"
           value={task.duration}
           onChange={handleChange}
           className="form-input"
         />
       </div>
       <div className="form-group">
-        <label>Time:</label>
+        <label>זמן משוער</label>
         <input
           type="text"
           name="time"
-          placeholder="Time (e.g., 9:00 AM)"
+           placeholder="לא חובה"
           value={task.time}
           onChange={handleChange}
           className="form-input"
         />
       </div>
       <div className="form-group">
-        <label>Priority:</label>
+        <label>עדיפות</label>
         <select
           name="priority"
           value={task.priority}
           onChange={handleChange}
           className="form-select"
         >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
+          <option value="High">גבוהה</option>
+          <option value="Medium">בינונית </option>
+          <option value="Low">נמוכה</option>
         </select>
       </div>
       <button onClick={addTask} className="add-task-button">
-        <MdOutlineAddTask className="add-task-icon" /> Add Task
+        <MdOutlineAddTask className="add-task-icon" /> הוספת משימה
       </button>
     </div>
   );
