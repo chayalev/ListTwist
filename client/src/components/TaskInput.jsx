@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MdOutlineAddTask } from "react-icons/md";
+import { generateSchedule } from "../services/api"
 import "../css/TaskInput.css";
 
 function TaskInput({ tasks, setTasks }) {
@@ -19,6 +20,17 @@ function TaskInput({ tasks, setTasks }) {
     setTasks([...tasks, task]);
     setTask({ name: "", duration: "", time: "", priority: "Medium" });
   };
+
+  const handleGenerateSchedule = async () => {
+    try {
+      const response = await generateSchedule(tasks);
+      // setSchedule(response.schedule);
+      // setTips(response.tips);
+    } catch (error) {
+      console.error("Error generating schedule:", error);
+    }
+  };
+
 
   return (
     <div className="task-input-container">
@@ -72,6 +84,9 @@ function TaskInput({ tasks, setTasks }) {
       <button onClick={addTask} className="add-task-button">
         <MdOutlineAddTask className="add-task-icon" /> הוספת משימה
       </button>
+      <button onClick={handleGenerateSchedule} className="generate-button">
+          Generate Schedule
+        </button>
     </div>
   );
 }

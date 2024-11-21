@@ -4,7 +4,6 @@ import TaskInput from "./components/TaskInput";
 import ScheduleView from "./components/ScheduleView";
 import BonusTips from "./components/BonusTips";
 import LandingPage from "./components/LandingPage";
-import { generateSchedule } from "./services/api";
 import "./css/App.css";
 
 function App() {
@@ -22,16 +21,6 @@ function App() {
     }
   }, []);
 
-  const handleGenerateSchedule = async () => {
-    try {
-      const response = await generateSchedule(tasks);
-      setSchedule(response.schedule);
-      setTips(response.tips);
-    } catch (error) {
-      console.error("Error generating schedule:", error);
-    }
-  };
-
   return (
     <Router>
       <div className="app-container">
@@ -42,10 +31,6 @@ function App() {
           <Route path="/schedule" element={schedule && <ScheduleView schedule={schedule} />} />
           <Route path="/tips" element={tips && tips.length > 0 && <BonusTips tips={tips} />} />
         </Routes>
-
-        <button onClick={handleGenerateSchedule} className="generate-button">
-          Generate Schedule
-        </button>
       </div>
     </Router>
   );

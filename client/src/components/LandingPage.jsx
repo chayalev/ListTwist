@@ -4,13 +4,6 @@ import "../css/LandingPage.css";
 import logo from "../images/ListTwistLogo.jpg";
 
 const LandingPage = () => {
-    const navigate = useNavigate(); // Create the navigate function
-
-    const handleLoginSuccess = () => {
-        // נווט לעמוד הוספת המשימה אחרי ההתחברות
-        navigate("/task-input");
-    };
-
     return (
         <div className="container">
             <header className="header">
