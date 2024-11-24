@@ -1,5 +1,5 @@
-const fs = require('fs');
 const { google } = require('googleapis');
+const fs = require('fs');
 const { GoogleGenerativeAI } = require('@google/generative-ai'); // ייבוא ה-GoogleGenerativeAI
 // ---- Gemini API Config ----
 const API_KEY = process.env.GEMINI_API_KEY;
