@@ -7,8 +7,5 @@ export const generateSchedule = async (tasks) => {
   const response = await axios.post(`${API_BASE_URL}/generateSchedule`, { tasks });
   //window.location.href = "https://calendar.google.com/calendar/";
   window.open("https://calendar.google.com/calendar/", "_blank");
-
-
-
   return response.data;
 };

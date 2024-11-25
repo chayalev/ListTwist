@@ -29,6 +29,45 @@ function loadTokensFromFile() {
 }
 
 // Add events to Google Calendar
+// async function addEventsToGoogleCalendar(schedule) {
+//     try {
+//         const savedTokens = loadTokensFromFile();
+//         if (!savedTokens) {
+//             throw new Error("User not authenticated. Please authenticate with Google.");
+//         }
+//         oauth2Client.setCredentials(savedTokens);
+//         const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+//         const currentDate = new Date().toISOString().split('T')[0];
+
+//         for (const task of schedule) {
+//             const event = {
+//                 summary: task.task,
+//                 start: {
+//                     dateTime: `${currentDate}T${task.startTime}:00`,
+//                     timeZone: 'Asia/Jerusalem',
+//                 },
+//                 end: {
+//                     dateTime: `${currentDate}T${task.endTime}:00`,
+//                     timeZone: 'Asia/Jerusalem',
+//                 },
+//             };
+
+//             const response = await calendar.events.insert({
+//                 auth: oauth2Client,
+//                 calendarId: 'primary',
+//                 resource: event,
+//             });
+//             console.log(`Event created: ${response.data.htmlLink}`);
+
+//         }
+
+//         console.log("All events were successfully added to Google Calendar!");
+
+//     } catch (error) {
+//         console.error("Error adding events to Google Calendar:", error);
+//     }
+// }
+
 async function addEventsToGoogleCalendar(schedule) {
     try {
         const savedTokens = loadTokensFromFile();
@@ -37,17 +76,16 @@ async function addEventsToGoogleCalendar(schedule) {
         }
         oauth2Client.setCredentials(savedTokens);
         const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-        const currentDate = new Date().toISOString().split('T')[0];
 
         for (const task of schedule) {
             const event = {
                 summary: task.task,
                 start: {
-                    dateTime: `${currentDate}T${task.startTime}:00`,
+                    dateTime: `${task.date}T${task.startTime}:00`,
                     timeZone: 'Asia/Jerusalem',
                 },
                 end: {
-                    dateTime: `${currentDate}T${task.endTime}:00`,
+                    dateTime: `${task.date}T${task.endTime}:00`,
                     timeZone: 'Asia/Jerusalem',
                 },
             };
@@ -58,7 +96,6 @@ async function addEventsToGoogleCalendar(schedule) {
                 resource: event,
             });
             console.log(`Event created: ${response.data.htmlLink}`);
-
         }
 
         console.log("All events were successfully added to Google Calendar!");
@@ -70,17 +107,21 @@ async function addEventsToGoogleCalendar(schedule) {
 
 
 
+
 async function generateDailySchedule(tasks) {
     const maxRetries = 3;
     let attempts = 0;
 
     while (attempts < maxRetries) {
         try {
+
+
             const prompt = `
             Based on the tasks provided below, create a daily schedule optimized for productivity. Each task should have:
             - "startTime" (specific start time in HH:MM format)
             - "endTime" (specific end time in HH:MM format)
             - "task" (the name of the task, in Hebrew)
+            - "date" (the specific date of the task in YYYY-MM-DD format)
             
             Consider these rules:
             1. Tasks with a specified start time should be scheduled exactly at their given start time.
@@ -95,11 +136,12 @@ async function generateDailySchedule(tasks) {
             - "startTime": the specific start time (in HH:MM format)
             - "endTime": the specific end time (in HH:MM format)
             - "task": the name of the task, in Hebrew
-            - If included, challenges or motivational sentences should appear as their own tasks.
+            - "date": the specific date of the task (in YYYY-MM-DD format)
             
             Do not include any other details. Use the following input tasks:
             ${JSON.stringify(tasks)}
-        `;
+            `;
+
 
             const response = await model.generateContent([{ text: prompt }]);
             console.log("Gemini API Response:", response); // הוספה של בדיקת התגובה

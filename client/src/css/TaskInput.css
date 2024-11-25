@@ -1,4 +1,4 @@
-.task-input-container {
+/* .task-input-container {
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -72,4 +72,163 @@
 .add-task-icon {
     margin-right: 8px;
     font-size: 1.5rem;
+} */
+
+
+.task-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    /* הגבלה לרוחב מסכים קטנים */
+    max-width: 500px;
+    /* הגבלת הרוחב המקסימלי */
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #f7fbff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', Arial, sans-serif;
+    box-sizing: border-box;
+    /* מטפל במרווחים פנימיים */
+}
+
+.form-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #004b91;
+    font-weight: bold;
+    border-bottom: 2px solid #004b91;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.form-input,
+.form-select {
+    padding: 10px;
+    border: 1px solid #d1e3f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: right;
+    width: 100%;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    /* חשוב לטיפול ברוחב */
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #004b91;
+    box-shadow: 0 0 8px rgba(0, 75, 145, 0.2);
+}
+
+.toggle-time-button {
+    background-color: #0056b3;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-time-button:hover {
+    background-color: #004080;
+    transform: scale(1.02);
+}
+
+.add-task-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 15px;
+}
+
+.add-task-button:hover {
+    background-color: #003f8a;
+    transform: scale(1.03);
+}
+
+.add-task-icon {
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.generate-button {
+    background-color: #0088cc;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.generate-button:hover {
+    background-color: #006bb3;
+    transform: scale(1.02);
+}
+
+.date-picker {
+    padding: 10px;
+    border: 1px solid #d1e3f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-picker:focus {
+    outline: none;
+    border-color: #004b91;
+    box-shadow: 0 0 8px rgba(0, 75, 145, 0.2);
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 600px) {
+    .task-input-container {
+        padding: 15px;
+        width: 95%;
+        /* גמישות על מסכים קטנים */
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .add-task-button,
+    .generate-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
 }
