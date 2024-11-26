@@ -1,7 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 import "../css/LandingPage.css";
-import logo from "../images/ListTwistLogo.jpg";
+//import logo from "/images/ListTwistLogo.png";
 
 const LandingPage = () => {
     return (
@@ -20,7 +19,7 @@ const LandingPage = () => {
             </header>
 
             <div className="logo-container">
-                <img src={logo} alt="Logo" className="animated-logo" />
+                <img src="/images/ListTwistLogo.png"  alt="Logo" className="animated-logo" />
             </div>
 
             <div className="google-button-container">

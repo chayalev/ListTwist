@@ -2,10 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
 const { google } = require('googleapis');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const fs = require('fs');
 require('dotenv').config();
-const { saveTokensToFile, loadTokensFromFile, addEventsToGoogleCalendar, generateDailySchedule } = require('./serverFunctions'); // ייבוא הפונקציות
+const { saveTokensToFile, addEventsToGoogleCalendar, generateDailySchedule } = require('./serverFunctions'); // ייבוא הפונקציות
 
 const app = express();
 app.use(cors());
@@ -21,12 +19,6 @@ app.use(
     })
 );
 
-// ---- Gemini API Config ----
-const API_KEY = process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({
-    model: 'gemini-1.5-flash',
-});
 
 // ---- Google OAuth Config ----
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -54,12 +46,12 @@ app.get('/auth/google/callback', async (req, res) => {
 
 
     try {
+        // Exchange the authorization code for tokens
         const { tokens } = await oauth2Client.getToken(code);
         console.log("tokens:", tokens);
-        oauth2Client.setCredentials(tokens);
+        oauth2Client.setCredentials(tokens);// Set the tokens in the OAuth2 client
         saveTokensToFile(tokens);
-        res.redirect('http://localhost:3001/auth/google/callback/task-input'); // כאן אתה מנווט לדף ה-task-input
-        //res.send('Authentication successful! You can now make API requests.');
+        res.redirect('http://localhost:3001/auth/google/callback/task-input'); // Redirect to task input page
     } catch (error) {
         console.error('Error retrieving tokens:', error);
         res.status(500).send('Error during authentication.');
@@ -69,17 +61,17 @@ app.get('/auth/google/callback', async (req, res) => {
 
 // Route to generate schedule and add it to Google Calendar
 app.post('/auth/google/callback/task-input/generateSchedule', async (req, res) => {
-    const tasks = req.body.tasks;
+    const tasks = req.body.tasks;// Get tasks from the request body
 
     if (!tasks || !Array.isArray(tasks)) {
+        // Validate the input
         return res.status(400).send('Invalid tasks format. Please send an array of task objects.');
     }
 
     try {
-        const schedule = await generateDailySchedule(tasks);
-        console.log("Generated Schedule:", schedule);
-        await addEventsToGoogleCalendar(schedule);
-        res.send({ schedule });
+        const schedule = await generateDailySchedule(tasks);// Generate schedule using Gemini API
+        await addEventsToGoogleCalendar(schedule); // Add the generated schedule to Google Calendar
+        res.send({ schedule });// Respond with the generated schedule
     } catch (error) {
         console.error("Error generating schedule or adding events:", error);
         res.status(500).send("Error generating schedule or adding events.");
