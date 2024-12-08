@@ -58,26 +58,6 @@ app.get('/auth/google/callback', async (req, res) => {
     }
 });
 
-
-// Route to generate schedule and add it to Google Calendar
-// app.post('/auth/google/callback/task-input/generateSchedule', async (req, res) => {
-//     const tasks = req.body.tasks;// Get tasks from the request body
-
-//     if (!tasks || !Array.isArray(tasks)) {
-//         // Validate the input
-//         return res.status(400).send('Invalid tasks format. Please send an array of task objects.');
-//     }
-
-//     try {
-//         const schedule = await generateDailySchedule(tasks);// Generate schedule using Gemini API
-//         await addEventsToGoogleCalendar(schedule); // Add the generated schedule to Google Calendar
-//         res.send({ schedule });// Respond with the generated schedule
-//     } catch (error) {
-//         console.error("Error generating schedule or adding events:", error);
-//         res.status(500).send("Error generating schedule or adding events.");
-//     }
-// });
-
 app.post('/auth/google/callback/task-input/generateSchedule', async (req, res) => {
     const { tasks, personalInfo } = req.body;
     console.log("req.body:");
