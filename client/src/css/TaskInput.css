@@ -155,3 +155,21 @@
         padding: 10px 15px;
     }
 }
+
+
+.start-button {
+    background-color: #0056b3;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.start-button:hover {
+    background-color: #003f8a;
+    transform: scale(1.03);
+}
