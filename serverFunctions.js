@@ -54,8 +54,7 @@ async function generateDailySchedule(tasks, personalInfo) {
        
        
        For each task, return a LINK related to that specific task. that help to suceed the task.
-        if the task is exersize use  link similar to this-"https://www.youtube.com/watch?v=0J1QYTJbvGQ"
-        if the task is something that connect to bake and cook give url to google with search of this thing
+      if the task is something that connect to bake and cook give url to google with search of this thing.
 
         Return the schedule as a JSON array of objects, where each object contains:
         - "startTime": the specific start time (in HH:MM format)
